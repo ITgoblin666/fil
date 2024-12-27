@@ -32,11 +32,11 @@
             const modelViewer = document.getElementById('model-viewer');
 
             if (os === 'mac' || os === 'windows') {
-                modelViewer.setAttribute('src', 'model.glb');
+                modelViewer.setAttribute('src', '/model.glb');
             } else if (os === 'ios') {
-                modelViewer.setAttribute('src', 'model.usdz');
+                modelViewer.setAttribute('src', '/model.usdz');
             } else {
-                modelViewer.setAttribute('src', 'model.glb');
+                modelViewer.setAttribute('src', '/model.glb');
             }
         }
 
