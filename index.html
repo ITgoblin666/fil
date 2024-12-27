@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Model Viewer</title>
+        <script src="https://cdn.jsdelivr.net/npm/@google/model-viewer"></script>
+</head>
+<body>
+    <h1>3D Model Viewer</h1>
+
+    <model-viewer id="model-viewer" alt="3D Model" auto-rotate camera-controls>
+    </model-viewer>
+
+    <script>
+        function getOperatingSystem() {
+            const userAgent = window.navigator.userAgent;
+
+            if (userAgent.indexOf('Mac OS X') !== -1) {
+                return 'mac';
+            } else if (userAgent.indexOf('Windows NT') !== -1) {
+                return 'windows';
+            } else if (userAgent.indexOf('Android') !== -1) {
+                return 'android';
+            } else if (userAgent.indexOf('iPhone') !== -1) {
+                return 'ios';
+            }
+            return 'unknown';
+        }
+        function loadModelBasedOnOS() {
+            const os = getOperatingSystem();
+            const modelViewer = document.getElementById('model-viewer');
+
+            if (os === 'mac' || os === 'windows') {
+                modelViewer.setAttribute('src', 'model.glb');
+            } else if (os === 'ios') {
+                modelViewer.setAttribute('src', 'model.usdz');
+            } else {
+                modelViewer.setAttribute('src', 'model.glb');
+            }
+        }
+
+        // Загружаем модель при открытии страницы
+        window.onload = loadModelBasedOnOS;
+    </script>
+</body>
+</html>
